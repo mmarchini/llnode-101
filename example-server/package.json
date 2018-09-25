@@ -1,0 +1,19 @@
+{
+  "name": "example-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "forever start -c \"node --abort-on-uncaught-exception\" index.js",
+    "stop": "forever stop index.js",
+    "logs": "forever logs index.js"
+  },
+  "author": "Matheus Marchini <mat@mmarchini.me>",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^1.12.0",
+    "forever": "^0.15.3",
+    "llnode": "^1.7.1"
+  }
+}
