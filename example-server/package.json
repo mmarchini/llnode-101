@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "fastify": "^1.12.0",
+    "fastify-static": "^0.14.0",
     "forever": "^0.15.3",
     "llnode": "^1.7.1"
   }

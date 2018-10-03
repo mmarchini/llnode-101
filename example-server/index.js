@@ -1,27 +1,22 @@
 'use strict';
 
+
+const { registerRoutes } = require("./app/routes.js");
+
 const app = require('fastify')();
+const path = require('path');
 
-const memoryLeaker = require('./utils/memory-leaker');
-app.get('/memory-leak/', function memoryLeakHandler(req, res) {
-  memoryLeaker.run();
-  res.send({});
+registerRoutes(app);
+
+process.on("unhandledRejection", (error, p) => {
+  throw reason;
+});
+app.setErrorHandler((error, request, reply) => {
+  throw reason;
 });
 
-const crasher = require('./utils/crasher');
-app.get('/uncaught-exceptions/', function uncaughtExceptionHandler(req, res) {
-  crasher.run();
-  res.send({});
+app.register(require('fastify-static'), {
+  root: path.join(__dirname, 'public'),
 });
 
-app.get('/infinite-loop/', function infiniteLoopHandler(req, res) {
-  while (true) {};
-  res.send({});
-});
-
-// TODO
-// app.get('/native-crash/', function nativeCrashHandler(req, res) {
-//     res.send({});
-// });
-
-app.listen(3000, () => { console.log('Running server on localhost:3000'); });
+app.listen(3000, '0.0.0.0', () => { console.log('Running server on localhost:3000'); });
