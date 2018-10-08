@@ -1,8 +1,8 @@
 'use strict';
 
 function serializeMonster(monster) {
-  const { id, name, type, spookiness }  = monster;
-  return { id, name, type, spookiness };
+  const { id, name, type, age, anthropomorpicness, spookiness }  = monster;
+  return { id, name, type, age, anthropomorpicness, spookiness };
 }
 
 module.exports = { serializeMonster };

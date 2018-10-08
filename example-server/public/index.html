@@ -37,7 +37,23 @@
           <button v-on:click="refreshMonsters">Refresh Monsters</button>
           <ul>
             <li v-for="monster in monsters">
-              {{ monster.name }} [{{ monster.spookiness }}]
+              <div v-if="monster.isEditing">
+                <input v-model="monster.name" placeholder="Name">
+                <select v-model="monster.type">
+                  <option value=""></option>
+                  <option value="ghost">Ghost</option>
+                  <option value="zombie">Zombie</option>
+                  <option value="vampire">Vampire</option>
+                  <option value="werewolf">Werewolf</option>
+                  <option value="witch">Witch</option>
+                  <option value="unknown">Unknown</option>
+                </select>
+                <button v-on:click="updateMonster(monster)">Update Monster</button>
+              </div>
+              <div v-else="!monster.isEditing">
+                {{ monster.name }} [{{ monster.spookiness }}]
+              </div>
+              <button v-on:click="monster.isEditing = !monster.isEditing">Edit</button>
             </li>
           </ul>
         </div>

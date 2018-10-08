@@ -1,28 +1,36 @@
 'use strict';
 
-async function anthropomorpicScore(anthropomorpicness) {
-  // await new Promise((resolve) => process.nextTick(resolve));
-  if (anthropomorpicness >= 100) return 1;
+function anthropomorpicScore(anthropomorpicness) {
+  if (anthropomorpicness >= 100) return new Promise((cb) => { cb(1); });
 
   const pl = anthropomorpicScore(anthropomorpicness + 3);
   const pr = anthropomorpicScore(anthropomorpicness + 6);
 
-  return (await pl) + (await pr);
+  return new Promise((resolve) => { process.nextTick(() => {
+    pl.then((a) => {
+      pr.then((b) => {
+        resolve(a + b);
+      });
+    });
+  }) } );
 }
 
-async function ageScore(age) {
-  // await new Promise((resolve) => process.nextTick(resolve));
-  if (age <= 1.) return 1;
+function ageScore(age) {
+  if (age <= 1.) return new Promise((cb) => { cb(1); });
 
   const pl = ageScore(age / 2);
   const pr = ageScore(age / 3);
 
-  return (await pl) + (await pr);
+  return new Promise((resolve) => { process.nextTick(() => {
+    pl.then((a) => {
+      pr.then((b) => {
+        resolve(a + b);
+      });
+    });
+  }) } );
 }
 
 async function spookiness(age, anthropomorpicness) {
-  // await new Promise((resolve) => process.nextTick(resolve));
-
   const agePromise = ageScore(age);
   const anthropomorpicPromise = anthropomorpicScore(anthropomorpicness);
 

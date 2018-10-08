@@ -8,7 +8,11 @@ const app = new Vue({
   },
   methods: {
     refreshMonsters: async function () {
-      this.monsters = await (await fetch("/monster/")).json();
+      this.monsters = (await (await fetch("/monster/")).json()).map((monster) => {
+        monster.isEditing = false;
+        return monster;
+      });
+      console.log(this.monsters);
     },
     createMonster: async function () {
       await fetch("/monster/", {
@@ -29,7 +33,7 @@ const app = new Vue({
         },
         body: JSON.stringify(monster)
       });
-      this.refreshMonster();
+      this.refreshMonsters();
     },
   },
 });
