@@ -4,9 +4,24 @@ const { spookiness } = require("../utils/spookiness.js");
 const monsters_list = new Map();
 
 class Monster {
+  static _copy({ name, type, age, anthropomorpicness, spookiness }) {
+    const newMonster = new Monster();
+
+    newMonster.name = name;
+    newMonster.type = type;
+    newMonster.age = age;
+    newMonster.anthropomorpicness = anthropomorpicness;
+    newMonster.spookiness = spookiness;
+    newMonster._previousState = undefined;
+    newMonster._nextState = undefined;
+
+    return newMonster;
+  }
+
   update({ name, type }) {
     // Keep changes history
-    const saveState = {... this}
+    const saveState = Monster._copy(this);
+    saveState.prototype = this.prototype;
     if (this._previousState)
       this._previousState._nextState = saveState;
     saveState._nextState = this;
