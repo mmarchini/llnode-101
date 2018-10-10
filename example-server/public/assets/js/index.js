@@ -4,7 +4,7 @@ const app = new Vue({
   el: '#app', // equivalent to mount
   data: {
     monsters: [],
-    newMonster: { name: "", type: "", age: null, anthropomorpicness: 100 },
+    newMonster: { name: "", type: "", age: null, anthropomorpicness: null },
   },
   methods: {
     refreshMonsters: async function () {
@@ -22,7 +22,7 @@ const app = new Vue({
         },
         body: JSON.stringify(this.newMonster),
       });
-      this.newMonster = { name: "", type: "", age: null, anthropomorpicness: 100 };
+      this.newMonster = { name: "", type: "", age: null, anthropomorpicness: null };
       this.refreshMonsters();
     },
     updateMonster: async function (monster) {

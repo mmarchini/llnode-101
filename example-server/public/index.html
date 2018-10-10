@@ -30,8 +30,8 @@
               <option value="witch">Witch</option>
               <option value="unknown">Unknown</option>
             </select>
-            <input v-model="newMonster.age" type=integer>
-            <input v-model="newMonster.anthropomorpicness" type=integer>
+            <input v-model="newMonster.age" type=integer placeholder="Age">
+            <input v-model="newMonster.anthropomorpicness" type=integer placeholder="Anthropomorpicness [0-100]">
             <button v-on:click="createMonster">Create Monster</button>
           </div>
           <button v-on:click="refreshMonsters">Refresh Monsters</button>

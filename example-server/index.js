@@ -8,6 +8,7 @@ const path = require('path');
 registerRoutes(app);
 
 app.setErrorHandler((error, request, reply) => {
+  if (reply.res.statusCode == 404) return true;
   process.abort();
 });
 process.on("unhandledRejection", (error, p) => {
