@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Matheus Marchini <mat@mmarchini.me>",
+  "author": "Mary Marchini <oss@mmarchini.me>",
   "license": "MIT",
   "dependencies": {
     "fastify": "^1.12.0",
