@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "fastify": "^1.12.0",
-    "fastify-static": "^0.14.0"
+    "fastify-static": "^4.2.4"
   }
 }
